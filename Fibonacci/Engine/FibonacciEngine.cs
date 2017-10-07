@@ -5,7 +5,7 @@ namespace Fibonacci.Engine
 {
     public class FibonacciEngine
     {
-        public int MaxIterations { get; set; }
+        public int MaxIterations { get; set; } = 87;
 
         public List<ulong> CalculateSequence(int max)
         {
@@ -32,7 +32,7 @@ namespace Fibonacci.Engine
             Console.WriteLine("");
             Console.Write("Input max number of iterations: ");
 
-            MaxIterations = Convert.ToInt32(Console.ReadLine());
+            GetInput();
         }
 
         public void OutputSequence(List<ulong> seq)
@@ -41,6 +41,13 @@ namespace Fibonacci.Engine
 
             foreach (ulong num in seq)
                 Console.WriteLine(String.Format("{0}: {1}", index++, num.ToString("#,##0")));
+        }
+
+        private void GetInput()
+        {
+            var input = Console.ReadLine();
+
+            MaxIterations = String.IsNullOrEmpty(input) ? MaxIterations : Convert.ToInt32(input);
         }
     }
 }
